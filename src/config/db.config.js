@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
 const sequelize = new Sequelize(env.database, env.username, env.password, {
   host: env.host,
   dialect: env.dialect,
-  operatorsAliases: false,
+  operatorsAliases: 0,
  
   pool: {
     max: env.max,
@@ -22,7 +22,7 @@ db.sequelize = sequelize;
 db.user = require('../models/user.model.js')(sequelize, Sequelize);
 
  
-// db.list.belongsToMany(db.user, { through: 'user_list', foreignKey: 'listId', otherKey: 'userId'});
+//db.list.belongsToMany(db.user, { through: 'user_list', foreignKey: 'listId', otherKey: 'userId'});
 // db.user.belongsToMany(db.list, { through: 'user_list', foreignKey: 'userId', otherKey: 'listId'});
 
 module.exports = db;

@@ -1,10 +1,11 @@
-module.exports = (sequelize, Sequelize) => {
-	const List = sequelize.define('users', {
-	  title: {
-		  type: Sequelize.STRING
-	  }
+// module.exports = (sequelize, Sequelize) => {
+// 	const List = sequelize.define('lists', {
+// 	  title: {
+// 		  type: Sequelize.STRING
+//       },
+//       timestamps: false
 	  
-	});
+// 	});
 	
-	return User;
-}
+// 	return List;
+// }
