@@ -1,4 +1,5 @@
 const db = require('../config/db.config');
+const jwt = require('jsonwebtoken');
 //const config = require('../config/');
 const User = db.user;
 
@@ -40,11 +41,11 @@ exports.signin = (req, res) => {
 			return res.status(401).send({ auth: false, accessToken: null, reason: "Invalid Password!" });
 		}
 		
-		// var token = jwt.sign({ id: user.id }, config.secret, {
-		//   expiresIn: 86400 // expires in 24 hours
-		// });
+		const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET || "Tokenimage", {
+		  expiresIn: 86400 // expires in 24 hours
+		});
 		user.password = undefined;
-		res.status(200).send({user});
+		res.status(200).send({user, token:token});
 		
 	}).catch(err => {
 		res.status(500).send('Error -> ' + err);

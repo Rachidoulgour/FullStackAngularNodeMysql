@@ -20,9 +20,10 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
  
 db.user = require('../models/user.model.js')(sequelize, Sequelize);
+db.list = require('../models/list.model')(sequelize, Sequelize);
 
  
-//db.list.belongsToMany(db.user, { through: 'user_list', foreignKey: 'listId', otherKey: 'userId'});
-// db.user.belongsToMany(db.list, { through: 'user_list', foreignKey: 'userId', otherKey: 'listId'});
+db.list.belongsToMany(db.user, { through: 'user_list', foreignKey: 'listId', otherKey: 'userId'});
+db.user.belongsToMany(db.list, { through: 'user_list', foreignKey: 'userId', otherKey: 'listId'});
 
 module.exports = db;
