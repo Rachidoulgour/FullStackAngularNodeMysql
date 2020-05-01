@@ -4,8 +4,9 @@ module.exports = function(app) {
     const listController = require('../controllers/listcontroller');
     app.get('/', usercontroller.home);
     app.post('/signup', usercontroller.signup);
-    app.post('/signin', usercontroller.signin);
+    app.post('/login', usercontroller.signin);
     app.post('/add-list', listController.createList);
+    app.post('/get-lists', listController.getLists);
 	
 	
 }

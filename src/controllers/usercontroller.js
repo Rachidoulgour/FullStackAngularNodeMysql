@@ -25,7 +25,7 @@ exports.signup = (req, res) => {
 	})
 }
 exports.signin = (req, res) => {
-	console.log("Sign-In");
+	console.log("Sign-In" ,req.body);
 	
 	User.findOne({
 		where: {

@@ -15,3 +15,14 @@ exports.createList = (req, res) => {
 		res.status(500).send("Fail! Error -> " + err);
 	})
 }
+exports.getLists = (req,res)=>{
+	List.find().then(list=>{
+		if(!list){
+			return res.status(404).send('User Not Found.');
+		}
+		console.log(user)
+		res.status(200).send({user});
+	}).catch(err => {
+		res.status(500).send('Error -> ' + err);
+	});
+}
