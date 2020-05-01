@@ -16,12 +16,12 @@ exports.createList = (req, res) => {
 	})
 }
 exports.getLists = (req,res)=>{
-	List.find().then(list=>{
+	List.findAll().then(list=>{
 		if(!list){
 			return res.status(404).send('User Not Found.');
 		}
-		console.log(user)
-		res.status(200).send({user});
+		console.log(list)
+		res.status(200).send({list});
 	}).catch(err => {
 		res.status(500).send('Error -> ' + err);
 	});

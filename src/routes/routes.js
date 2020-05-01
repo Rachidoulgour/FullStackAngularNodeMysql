@@ -6,7 +6,7 @@ module.exports = function(app) {
     app.post('/signup', usercontroller.signup);
     app.post('/login', usercontroller.signin);
     app.post('/add-list', listController.createList);
-    app.post('/get-lists', listController.getLists);
+    app.get('/get-lists', listController.getLists);
 	
 	
 }
