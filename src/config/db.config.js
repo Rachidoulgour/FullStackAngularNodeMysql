@@ -21,6 +21,7 @@ db.sequelize = sequelize;
  
 db.user = require('../models/user.model.js')(sequelize, Sequelize);
 db.list = require('../models/list.model')(sequelize, Sequelize);
+db.task = require('../models/task.model')(sequelize, Sequelize);
 
  
 db.list.belongsToMany(db.user, { through: 'user_list', foreignKey: 'listId', otherKey: 'userId'});
