@@ -11,7 +11,7 @@ exports.createList = (req, res) => {
 		done: false,
 		
 	}).then(() => {
-				res.send("List created successfuly");
+				res.send({message:"List created successfuly"});
         }).catch(err => {
 		res.status(500).send("Fail! Error -> " + err);
 	})
@@ -47,6 +47,27 @@ exports.getList = (req,res)=>{
 		res.status(500).send('Error -> ' + err);
 	});
 }
+exports.deleteList = (req,res)=>{
+	console.log(req.params)
+	Task.destroy({
+		where:{
+			List_id:req.params.id
+		}
+	}).then(List.destroy({
+		where:{
+			id:req.params.id
+		}
+	})).then(list=>{
+		// if(!list){
+		// 	return res.status(404).send({message:'List Not Found.'});
+		// }
+		//console.log(task)
+		res.status(200).send({message:"Deleted"});
+	}).catch(err => {
+		res.status(500).send('Error -> ' + err);
+	});
+}
+
 exports.createTask = (req, res) => {
 	// Save User to Database
 	console.log("Processing func -> createTask");
