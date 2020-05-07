@@ -79,3 +79,19 @@ exports.getTasks = (req,res)=>{
 		console.log("error",err)
 	})
 }
+exports.deleteTask = (req,res)=>{
+	console.log(req.params)
+	Task.destroy({
+		where:{
+			id:req.params.id
+		}
+	}).then(task=>{
+		if(!task){
+			return res.status(404).send({message:'List Not Found.'});
+		}
+		//console.log(task)
+		res.status(200).send({message:"Deleted"});
+	}).catch(err => {
+		res.status(500).send('Error -> ' + err);
+	});
+}

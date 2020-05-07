@@ -9,5 +9,6 @@ module.exports = function(app) {
     app.get('/get-lists', listController.getLists);
     app.get('/get-list/:id', listController.getLists);
     app.post('/add-task', listController.createTask);
+    app.delete('/delete-task/:id', listController.deleteTask);
 	
 }
