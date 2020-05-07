@@ -7,6 +7,7 @@ module.exports = function(app) {
     app.post('/login', usercontroller.signin);
     app.post('/add-list', listController.createList);
     app.get('/get-lists', listController.getLists);
-	app.get('/get-list/:id', listController.getLists);
+    app.get('/get-list/:id', listController.getLists);
+    app.post('/add-task', listController.createTask);
 	
 }
