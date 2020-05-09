@@ -1,32 +1,26 @@
 const db = require('../config/db.config');
 const jwt = require('jsonwebtoken');
-//const config = require('../config/');
+
 const User = db.user;
 
 
 var bcrypt = require('bcryptjs');
 
-exports.home=(req, res)=>{
-    res.send("Holaaaa Homeeeee")
-}
 
 exports.signup = (req, res) => {
 	// Save User to Database
-	console.log("Processing func -> SignUp");
-	console.log("req>>>:  ",req.body)
 	User.create({
 		username: req.body.username,
 		email: req.body.email,
 		password: bcrypt.hashSync(req.body.password, 8)
 	}).then(() => {
-				res.send("User registered successfully!");
+				res.send({message:"User registered successfully!"});
         }).catch(err => {
 		res.status(500).send("Fail! Error -> " + err);
 	})
 }
-exports.signin = (req, res) => {
-	console.log("Sign-In" ,req.body);
-	
+exports.signin = (req, res) => {	
+	console.log(req.body)
 	User.findOne({
 		where: {
 			email: req.body.email
